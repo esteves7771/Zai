@@ -5,7 +5,7 @@ import ProductSheet from '../components/ProductSheet'
 
 const STATES = { idle: 'idle', scanning: 'scanning', loading: 'loading', result: 'result', notfound: 'notfound', error: 'error' }
 
-export default function Scan() {
+export default function Scan({ lang = 'en' }) {
   const [state, setState] = useState(STATES.idle)
   const [product, setProduct] = useState(null)
   const [lastBarcode, setLastBarcode] = useState(null)
@@ -191,7 +191,7 @@ export default function Scan() {
       </div>
 
       {state === STATES.result && product && (
-        <ProductSheet product={product} onClose={reset} onScanAgain={handleScanAgain} />
+        <ProductSheet product={product} onClose={reset} onScanAgain={handleScanAgain} lang={lang} />
       )}
     </div>
   )
