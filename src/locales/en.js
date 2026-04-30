@@ -76,6 +76,7 @@ export default {
     close: 'Close',
   },
   share: {
+    title: 'Share Zai',
     text: 'Check out Zai – scan food products and know exactly what you\'re eating! 🥭',
     copied: 'Link copied!',
   }
