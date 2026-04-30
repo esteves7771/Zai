@@ -1,6 +1,11 @@
 import en from '../locales/en.js'
+import pt from '../locales/pt.js'
+import es from '../locales/es.js'
+import fr from '../locales/fr.js'
+import de from '../locales/de.js'
+import it from '../locales/it.js'
 
-const LANGUAGES = { en, pt: en, es: en, fr: en, de: en, it: en }
+const LANGUAGES = { en, pt, es, fr, de, it }
 
 export const LANGUAGE_OPTIONS = [
   { code: 'en', label: 'English', flag: '🇬🇧' },
