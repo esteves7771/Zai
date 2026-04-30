@@ -25,10 +25,11 @@ export default function History() {
     brand: entry.brand,
     image: entry.image,
     nutriscoreGrade: entry.nutriscoreGrade,
-    additivesTags: [],
-    nutriments: {},
-    labels: [],
-    ingredients: null,
+    additivesTags: entry.additivesTags || [],
+    nutriments: entry.nutriments || {},
+    labels: entry.labels || [],
+    ingredients: entry.ingredients || null,
+    quantity: entry.quantity || '',
   })
 
   return (
