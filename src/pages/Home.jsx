@@ -7,31 +7,20 @@ export default function Home({ onScan }) {
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
       padding: '40px 32px',
-      gap: 0,
+      background: '#ffffff',
     }}>
       {/* Logo */}
-      <div style={{
-        animation: 'fadeSlideUp 0.5s ease both',
-        display: 'flex', flexDirection: 'column', alignItems: 'center',
-      }}>
+      <div style={{ animation: 'fadeSlideUp 0.5s ease both' }}>
         <img
           src="/Zai/logo.png"
           alt="Zai"
-          style={{ width: 140, height: 140, objectFit: 'contain' }}
+          style={{ width: 160, height: 160, objectFit: 'contain' }}
         />
       </div>
 
       {/* Tagline */}
-      <div style={{
-        animation: 'fadeSlideUp 0.5s 0.1s ease both',
-        textAlign: 'center', marginTop: 8,
-      }}>
-        <p style={{
-          fontSize: 15,
-          color: 'var(--text-muted)',
-          lineHeight: 1.6,
-          maxWidth: 240,
-        }}>
+      <div style={{ animation: 'fadeSlideUp 0.5s 0.1s ease both', textAlign: 'center', marginTop: 8 }}>
+        <p style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: 240 }}>
           Know exactly what you're eating. Scan, search, decide.
         </p>
       </div>
@@ -39,7 +28,8 @@ export default function Home({ onScan }) {
       {/* Feature pills */}
       <div style={{
         animation: 'fadeSlideUp 0.5s 0.2s ease both',
-        display: 'flex', gap: 8, marginTop: 32, flexWrap: 'wrap', justifyContent: 'center',
+        display: 'flex', gap: 8, marginTop: 28,
+        flexWrap: 'wrap', justifyContent: 'center',
       }}>
         {['🔬 Additives', '🥗 Nutri-Score', '📊 Full Score'].map(f => (
           <span key={f} style={{
@@ -55,7 +45,10 @@ export default function Home({ onScan }) {
       </div>
 
       {/* CTA */}
-      <div style={{ animation: 'fadeSlideUp 0.5s 0.3s ease both', marginTop: 48, width: '100%' }}>
+      <div style={{
+        animation: 'fadeSlideUp 0.5s 0.3s ease both',
+        marginTop: 48, width: '100%',
+      }}>
         <button
           onClick={onScan}
           style={{
@@ -68,20 +61,21 @@ export default function Home({ onScan }) {
             fontWeight: 800,
             fontSize: 17,
             boxShadow: '0 6px 20px rgba(45,80,22,0.30)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 10,
           }}
         >
           <ScanIcon /> Scan a Product
         </button>
       </div>
 
-      {/* Footer note */}
+      {/* Footer */}
       <p style={{
         animation: 'fadeSlideUp 0.5s 0.4s ease both',
-        marginTop: 24,
-        fontSize: 12,
-        color: 'var(--text-light)',
-        textAlign: 'center',
+        marginTop: 24, fontSize: 12,
+        color: 'var(--text-light)', textAlign: 'center',
       }}>
         Powered by Open Food Facts · 3M+ products
       </p>
