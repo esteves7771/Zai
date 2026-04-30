@@ -80,7 +80,7 @@ export default {
     avoid: 'Vermeiden',
     tooltip: {
       title: 'Wie wird dieser Score berechnet?',
-      nutri: 'Der Nutri-Score (A–E) bildet die Grundlage des Scores.',
+      nutri: 'Der Nutri-Score (A-E) bildet die Grundlage des Scores.',
       additives: 'Jeder Zusatzstoff wird je nach Risikoniveau bestraft.',
       organic: 'Bio-Zertifizierung gibt einen Bonus.',
       close: 'Verstanden',
@@ -94,7 +94,7 @@ export default {
   },
   share: {
     title: 'Zai Teilen',
-    text: 'Entdecke Zai – scanne Produkte und wisse genau, was du isst!',
+    text: 'Entdecke Zai - scanne Produkte und wisse genau, was du isst!',
     copied: 'Link kopiert!',
   }
 }
