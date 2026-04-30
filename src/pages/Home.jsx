@@ -134,7 +134,7 @@ export default function Home({ onScan, lang, onLangChange }) {
       {/* Share button */}
       <div style={{ animation: 'fadeSlideUp 0.5s 0.35s ease both', marginTop: 12, width: '100%' }}>
         <button onClick={handleShare} style={{ width: '100%', padding: '14px', background: 'transparent', color: 'var(--green-dark)', borderRadius: 'var(--radius-lg)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15, border: '1.5px solid var(--green-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-          📤 {shareCopied ? T.share.copied : T.share}
+          📤 {shareCopied ? T.share.copied : T.share.text}
         </button>
       </div>
 
