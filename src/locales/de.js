@@ -76,6 +76,7 @@ export default {
     close: 'Schließen',
   },
   share: {
+    title: 'Share Zai',
     text: 'Entdecke Zai – scanne Produkte und wisse genau, was du isst! 🥭',
     copied: 'Link kopiert!',
   }
