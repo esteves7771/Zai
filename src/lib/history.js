@@ -20,8 +20,13 @@ export function addToHistory(product, score) {
     score,
     nutriscoreGrade: product.nutriscoreGrade,
     scannedAt: new Date().toISOString(),
+    // Save full data needed to reconstruct product sheet
+    additivesTags: product.additivesTags || [],
+    nutriments: product.nutriments || {},
+    labels: product.labels || [],
+    ingredients: product.ingredients || null,
+    quantity: product.quantity || '',
   }
-  // remove duplicate barcode if exists
   const filtered = history.filter(h => h.barcode !== product.barcode)
   const updated = [entry, ...filtered].slice(0, MAX)
   localStorage.setItem(KEY, JSON.stringify(updated))
