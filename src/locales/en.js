@@ -97,4 +97,3 @@ export default {
     text: 'Check out Zai - scan food products and know exactly what you are eating!',
     copied: 'Link copied!',
   },
-}
