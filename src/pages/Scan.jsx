@@ -18,21 +18,37 @@ export default function Scan() {
   }, [])
 
   const startScanner = async () => {
-    setState(STATES.scanning)
-    try {
-      const scanner = new Html5Qrcode('qr-reader')
-      html5QrRef.current = scanner
-      await scanner.start(
-        { facingMode: 'environment' },
-        { fps: 10, qrbox: { width: 250, height: 120 } },
-        onScanSuccess,
-        () => {}
-      )
-    } catch (err) {
-      console.error(err)
-      setState(STATES.error)
-    }
+  setState(STATES.scanning)
+  try {
+    const scanner = new Html5Qrcode('qr-reader')
+    html5QrRef.current = scanner
+    await scanner.start(
+      { facingMode: 'environment' },
+      { fps: 10, qrbox: { width: 250, height: 120 } },
+      onScanSuccess,
+      () => {}
+    )
+    // Force video to be visible
+    setTimeout(() => {
+      const video = document.querySelector('#qr-reader video')
+      if (video) {
+        video.style.width = '100%'
+        video.style.height = '100%'
+        video.style.objectFit = 'cover'
+        video.style.position = 'absolute'
+        video.style.top = '0'
+        video.style.left = '0'
+      }
+      const qrDiv = document.querySelector('#qr-reader')
+      if (qrDiv) {
+        qrDiv.style.overflow = 'hidden'
+      }
+    }, 500)
+  } catch (err) {
+    console.error(err)
+    setState(STATES.error)
   }
+}
 
   const stopScanner = async () => {
     try {
