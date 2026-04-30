@@ -8,6 +8,11 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      workbox: {
+        cleanupOutdatedCaches: true,
+        skipWaiting: true,
+        clientsClaim: true,
+      },
       includeAssets: ['favicon.ico', 'logo.png'],
       manifest: {
         name: 'Zai – Know What You Eat',
