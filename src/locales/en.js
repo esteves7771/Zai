@@ -94,7 +94,7 @@ export default {
   },
   share: {
     title: 'Share Zai',
-    text: 'Check out Zai – scan food products and know exactly what you\'re eating! 🥭',
+    text: 'Check out Zai - scan food products and know exactly what you are eating!',
     copied: 'Link copied!',
   }
 }
