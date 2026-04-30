@@ -11,7 +11,8 @@ const COLORS = {
 export default function NutriBadge({ grade, size = 'md' }) {
   if (!grade) return null
   const g = grade.toLowerCase()
-  const style = COLORS[g] || { bg: '#ccc', text: '#333' }
+  if (!COLORS[g]) return null
+  const style = COLORS[g]
   const sizes = { sm: { w: 24, h: 24, fs: 12 }, md: { w: 32, h: 32, fs: 16 }, lg: { w: 44, h: 44, fs: 22 } }
   const s = sizes[size] || sizes.md
 
