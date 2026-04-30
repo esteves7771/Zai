@@ -131,21 +131,21 @@ export default function ProductSheet({ product, onClose, onScanAgain, lang = 'en
           {tab === 'overview' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {positives.length > 0 && (
-                <Section title="Positives" color="var(--score-green)" icon="✓">
-                  {positives.map((p, i) => (
-                    <ListItem key={i} color="var(--score-green)" text={p} />
+                <Section title={T.sheet.positives} color="var(--score-green)" icon="✓">
+                  {positives.map((key, i) => (
+                    <ListItem key={i} color="var(--score-green)" text={resolvePositive(key, T)} />
                   ))}
                 </Section>
               )}
               {negatives.length > 0 && (
-                <Section title="Negatives" color="var(--score-red)" icon="✕">
-                  {negatives.map((n, i) => (
-                    <ListItem key={i} color="var(--score-red)" text={n} />
+                <Section title={T.sheet.negatives} color="var(--score-red)" icon="✕">
+                  {negatives.map((key, i) => (
+                    <ListItem key={i} color="var(--score-red)" text={resolveNegative(key, T, additivesList)} />
                   ))}
                 </Section>
               )}
               {positives.length === 0 && negatives.length === 0 && (
-                <Empty text="Not enough nutritional data available for this product." />
+                <Empty text={T.sheet.noData} />
               )}
             </div>
           )}
