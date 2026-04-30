@@ -3,8 +3,10 @@ import { searchProducts } from '../lib/api'
 import { scoreProduct } from '../lib/scoring'
 import ProductCard from '../components/ProductCard'
 import ProductSheet from '../components/ProductSheet'
+import { t } from '../lib/i18n'
 
 export default function Search({ lang = 'en' }) {
+  const T = t(lang)
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(false)
@@ -42,7 +44,7 @@ export default function Search({ lang = 'en' }) {
     <div className="page-enter" style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
       {/* Header */}
       <div style={{ padding: '16px 20px 12px', background: 'var(--surface)', borderBottom: '1px solid var(--border)' }}>
-        <h2 style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 22, marginBottom: 14 }}>Search</h2>
+        <h2 style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 22, marginBottom: 14 }}>{T.search.title}</h2>
         <form onSubmit={onSubmit}>
           <div style={{ position: 'relative' }}>
             <div style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }}>
@@ -50,28 +52,14 @@ export default function Search({ lang = 'en' }) {
             </div>
             <input
               type="text"
-              placeholder="Search products, brands…"
+              placeholder={T.search.placeholder}
               value={query}
               onChange={onChange}
               autoFocus
-              style={{
-                width: '100%',
-                padding: '13px 44px',
-                background: 'var(--surface-2)',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius-md)',
-                fontSize: 15,
-                fontFamily: 'DM Sans, sans-serif',
-                color: 'var(--text)',
-                outline: 'none',
-              }}
+              style={{ width: '100%', padding: '13px 44px', background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', fontSize: 15, fontFamily: 'DM Sans, sans-serif', color: 'var(--text)', outline: 'none' }}
             />
             {query && (
-              <button
-                type="button"
-                onClick={() => { setQuery(''); setResults([]); setSearched(false) }}
-                style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', fontSize: 18, lineHeight: 1 }}
-              >×</button>
+              <button type="button" onClick={() => { setQuery(''); setResults([]); setSearched(false) }} style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', fontSize: 18, lineHeight: 1 }}>×</button>
             )}
           </div>
         </form>
@@ -88,21 +76,21 @@ export default function Search({ lang = 'en' }) {
         {!loading && searched && results.length === 0 && (
           <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text-muted)' }}>
             <span style={{ fontSize: 48, display: 'block', marginBottom: 16 }}>🤷</span>
-            <p style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 17, marginBottom: 8 }}>No results found</p>
-            <p style={{ fontSize: 14 }}>Try a different product name or brand.</p>
+            <p style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 17, marginBottom: 8 }}>{T.search.empty}</p>
+            <p style={{ fontSize: 14 }}>{T.search.emptyHint}</p>
           </div>
         )}
 
         {!loading && !searched && (
           <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text-muted)' }}>
             <span style={{ fontSize: 48, display: 'block', marginBottom: 16 }}>🔍</span>
-            <p style={{ fontSize: 14 }}>Search any food product by name or brand.</p>
+            <p style={{ fontSize: 14 }}>{T.search.hint}</p>
           </div>
         )}
 
         {!loading && results.length > 0 && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 4 }}>{results.length} results</p>
+            <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 4 }}>{results.length} {T.search.results}</p>
             {results.map((p, i) => {
               const score = scoreProduct(p)
               return (
@@ -135,12 +123,7 @@ function SearchIcon() {
 
 function Spinner() {
   return (
-    <div style={{
-      width: 36, height: 36, borderRadius: '50%',
-      border: '3px solid var(--border)',
-      borderTopColor: 'var(--green-dark)',
-      animation: 'spin 0.8s linear infinite',
-    }}>
+    <div style={{ width: 36, height: 36, borderRadius: '50%', border: '3px solid var(--border)', borderTopColor: 'var(--green-dark)', animation: 'spin 0.8s linear infinite' }}>
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
   )
