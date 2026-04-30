@@ -44,7 +44,7 @@ export default function BottomNav({ active, onChange }) {
                 background: 'var(--green-dark)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 boxShadow: '0 4px 16px rgba(45,80,22,0.35)',
-                marginTop: -20,
+                marginTop: -8,
                 transition: 'transform 0.15s ease',
               }}
               onTouchStart={e => e.currentTarget.style.transform = 'scale(0.92)'}
