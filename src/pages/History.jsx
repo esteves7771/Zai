@@ -3,7 +3,7 @@ import { getHistory, clearHistory } from '../lib/history'
 import ProductCard from '../components/ProductCard'
 import ProductSheet from '../components/ProductSheet'
 
-export default function History() {
+export default function History({ lang = 'en' }) {
   const [history, setHistory] = useState([])
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [showConfirm, setShowConfirm] = useState(false)
@@ -102,6 +102,7 @@ export default function History() {
         <ProductSheet
           product={historyToProduct(selectedProduct)}
           onClose={() => setSelectedProduct(null)}
+          lang={lang}
         />
       )}
     </div>
