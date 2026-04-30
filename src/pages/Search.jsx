@@ -4,7 +4,7 @@ import { scoreProduct } from '../lib/scoring'
 import ProductCard from '../components/ProductCard'
 import ProductSheet from '../components/ProductSheet'
 
-export default function Search() {
+export default function Search({ lang = 'en' }) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(false)
@@ -119,7 +119,7 @@ export default function Search() {
       </div>
 
       {selectedProduct && (
-        <ProductSheet product={selectedProduct} onClose={() => setSelectedProduct(null)} />
+        <ProductSheet product={selectedProduct} onClose={() => setSelectedProduct(null)} lang={lang} />
       )}
     </div>
   )
