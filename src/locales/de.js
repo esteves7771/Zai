@@ -94,7 +94,7 @@ export default {
   },
   share: {
     title: 'Zai Teilen',
-    text: 'Entdecke Zai – scanne Produkte und wisse genau, was du isst! 🥭',
+    text: 'Entdecke Zai – scanne Produkte und wisse genau, was du isst!',
     copied: 'Link kopiert!',
   }
 }
