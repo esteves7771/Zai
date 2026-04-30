@@ -1,7 +1,6 @@
 export default {
   tagline: 'Know exactly what you\'re eating. Scan, search, decide.',
   scan: 'Scan a Product',
-  share: 'Share Zai',
   contact: 'Contact',
   powered: 'Powered by Open Food Facts · 3M+ products',
   pills: ['🔬 Additives', '🥗 Nutri-Score', '📊 Full Score'],
@@ -97,3 +96,4 @@ export default {
     text: 'Check out Zai - scan food products and know exactly what you are eating!',
     copied: 'Link copied!',
   },
+ }
