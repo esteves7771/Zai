@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { getHistory, clearHistory } from '../lib/history'
 import ProductCard from '../components/ProductCard'
 import ProductSheet from '../components/ProductSheet'
+import { t } from '../lib/i18n'
 
 export default function History({ lang = 'en' }) {
+  const T = t(lang)
   const [history, setHistory] = useState([])
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [showConfirm, setShowConfirm] = useState(false)
@@ -18,7 +20,6 @@ export default function History({ lang = 'en' }) {
     setShowConfirm(false)
   }
 
-  // Reconstruct product object from history entry for ProductSheet
   const historyToProduct = (entry) => ({
     barcode: entry.barcode,
     name: entry.name,
@@ -35,18 +36,12 @@ export default function History({ lang = 'en' }) {
   return (
     <div className="page-enter" style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
       {/* Header */}
-      <div style={{
-        padding: '16px 20px 14px',
-        background: 'var(--surface)',
-        borderBottom: '1px solid var(--border)',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      }}>
-        <h2 style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 22 }}>History</h2>
+      <div style={{ padding: '16px 20px 14px', background: 'var(--surface)', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <h2 style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 22 }}>{T.history.title}</h2>
         {history.length > 0 && (
-          <button
-            onClick={() => setShowConfirm(true)}
-            style={{ fontSize: 13, color: 'var(--score-red)', fontWeight: 600 }}
-          >Clear all</button>
+          <button onClick={() => setShowConfirm(true)} style={{ fontSize: 13, color: 'var(--score-red)', fontWeight: 600 }}>
+            {T.history.clearAll}
+          </button>
         )}
       </div>
 
@@ -55,12 +50,14 @@ export default function History({ lang = 'en' }) {
         {history.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '80px 20px', color: 'var(--text-muted)' }}>
             <span style={{ fontSize: 56, display: 'block', marginBottom: 20 }}>📋</span>
-            <p style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 18, marginBottom: 10 }}>No scans yet</p>
-            <p style={{ fontSize: 14, lineHeight: 1.6 }}>Scan or search for a product and it'll show up here.</p>
+            <p style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 18, marginBottom: 10 }}>{T.history.empty}</p>
+            <p style={{ fontSize: 14, lineHeight: 1.6 }}>{T.history.emptyHint}</p>
           </div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 4 }}>{history.length} product{history.length !== 1 ? 's' : ''} scanned</p>
+            <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 4 }}>
+              {history.length} {history.length !== 1 ? T.history.scannedPlural : T.history.scanned}
+            </p>
             {history.map(entry => (
               <ProductCard
                 key={entry.id}
@@ -76,23 +73,19 @@ export default function History({ lang = 'en' }) {
 
       {/* Confirm clear */}
       {showConfirm && (
-        <div style={{
-          position: 'fixed', inset: 0, zIndex: 200,
-          background: 'rgba(0,0,0,0.5)',
-          display: 'flex', alignItems: 'flex-end',
-        }} onClick={() => setShowConfirm(false)}>
-          <div style={{
-            background: 'var(--surface)', borderRadius: '24px 24px 0 0',
-            width: '100%', padding: '24px 24px 40px',
-            animation: 'slideUp 0.3s ease',
-          }} onClick={e => e.stopPropagation()}>
-            <h3 style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 19, marginBottom: 10 }}>Clear history?</h3>
+        <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'flex-end' }} onClick={() => setShowConfirm(false)}>
+          <div style={{ background: 'var(--surface)', borderRadius: '24px 24px 0 0', width: '100%', padding: '24px 24px 40px', animation: 'slideUp 0.3s ease' }} onClick={e => e.stopPropagation()}>
+            <h3 style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 19, marginBottom: 10 }}>{T.history.confirmTitle}</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: 14, marginBottom: 24 }}>
-              All {history.length} scanned products will be removed. This can't be undone.
+              {T.history.confirmText}
             </p>
             <div style={{ display: 'flex', gap: 12 }}>
-              <button onClick={() => setShowConfirm(false)} style={{ flex: 1, padding: 14, background: 'var(--surface-2)', borderRadius: 'var(--radius-md)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--text)' }}>Cancel</button>
-              <button onClick={handleClear} style={{ flex: 1, padding: 14, background: 'var(--score-red)', borderRadius: 'var(--radius-md)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15, color: '#fff' }}>Clear All</button>
+              <button onClick={() => setShowConfirm(false)} style={{ flex: 1, padding: 14, background: 'var(--surface-2)', borderRadius: 'var(--radius-md)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--text)' }}>
+                {T.history.cancel}
+              </button>
+              <button onClick={handleClear} style={{ flex: 1, padding: 14, background: 'var(--score-red)', borderRadius: 'var(--radius-md)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15, color: '#fff' }}>
+                {T.history.clear}
+              </button>
             </div>
           </div>
         </div>
