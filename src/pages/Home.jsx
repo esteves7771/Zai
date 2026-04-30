@@ -11,15 +11,17 @@ export default function Home({ onScan, lang, onLangChange }) {
 
   const handleShare = async () => {
     const url = 'https://esteves7771.github.io/Zai/'
-    const text = T.share.text
+    const shareText = T.share.text
     if (navigator.share) {
-      try { await navigator.share({ title: 'Zai', text, url }) } catch {}
+      try { await navigator.share({ title: 'Zai', text: shareText, url }) } catch {}
     } else {
       await navigator.clipboard.writeText(url)
       setShareCopied(true)
       setTimeout(() => setShareCopied(false), 2000)
     }
   }
+
+  const shareLabel = shareCopied ? T.share.copied : T.share.text
 
   return (
     <div className="page-enter" style={{
@@ -32,77 +34,42 @@ export default function Home({ onScan, lang, onLangChange }) {
     }}>
 
       {/* Top bar */}
-      <div style={{
-        position: 'absolute', top: 16, left: 16, right: 16,
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-      }}>
+      <div style={{ position: 'absolute', top: 16, left: 16, right: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+
         {/* Language selector */}
         <div style={{ position: 'relative' }}>
           <button
             onClick={() => setShowLang(!showLang)}
-            style={{
-              display: 'flex', alignItems: 'center', gap: 6,
-              padding: '6px 12px',
-              background: 'var(--surface-2)',
-              border: '1px solid var(--border)',
-              borderRadius: 100,
-              fontSize: 13,
-              fontFamily: 'Nunito, sans-serif',
-              fontWeight: 700,
-              color: 'var(--text)',
-            }}
+            style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px', background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 100, fontSize: 13, fontFamily: 'Nunito, sans-serif', fontWeight: 700, color: 'var(--text)' }}
           >
-            <span>{currentLang?.flag}</span>
-            <span>{currentLang?.label}</span>
+            <span>{currentLang ? currentLang.flag : '🇬🇧'}</span>
+            <span>{currentLang ? currentLang.label : 'English'}</span>
             <span style={{ fontSize: 10 }}>▼</span>
           </button>
 
           {showLang && (
-            <div style={{
-              position: 'absolute', top: '110%', left: 0,
-              background: 'var(--surface)',
-              border: '1px solid var(--border)',
-              borderRadius: 'var(--radius-md)',
-              boxShadow: 'var(--shadow-lg)',
-              zIndex: 100, minWidth: 160,
-              overflow: 'hidden',
-            }}>
+            <div style={{ position: 'absolute', top: '110%', left: 0, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-lg)', zIndex: 100, minWidth: 170, overflow: 'hidden' }}>
               {LANGUAGE_OPTIONS.map(l => (
                 <button
                   key={l.code}
                   onClick={() => { onLangChange(l.code); setShowLang(false) }}
-                  style={{
-                    width: '100%', padding: '11px 14px',
-                    display: 'flex', alignItems: 'center', gap: 10,
-                    background: l.code === lang ? 'var(--green-light)' : 'transparent',
-                    color: l.code === lang ? 'var(--green-dark)' : 'var(--text)',
-                    fontFamily: 'Nunito, sans-serif',
-                    fontWeight: l.code === lang ? 700 : 400,
-                    fontSize: 14, textAlign: 'left',
-                    borderBottom: '1px solid var(--border)',
-                  }}
+                  style={{ width: '100%', padding: '11px 14px', display: 'flex', alignItems: 'center', gap: 10, background: l.code === lang ? 'var(--green-light)' : 'transparent', color: l.code === lang ? 'var(--green-dark)' : 'var(--text)', fontFamily: 'Nunito, sans-serif', fontWeight: l.code === lang ? 700 : 400, fontSize: 14, textAlign: 'left', borderBottom: '1px solid var(--border)' }}
                 >
-                  <span>{l.flag}</span> {l.label}
+                  <span>{l.flag}</span>
+                  <span>{l.label}</span>
                 </button>
               ))}
             </div>
           )}
         </div>
 
-        {/* Contact button */}
+        {/* Contact */}
         <button
           onClick={() => setShowContact(true)}
-          style={{
-            padding: '6px 12px',
-            background: 'var(--surface-2)',
-            border: '1px solid var(--border)',
-            borderRadius: 100,
-            fontSize: 13,
-            fontFamily: 'Nunito, sans-serif',
-            fontWeight: 700,
-            color: 'var(--text)',
-          }}
-        >✉️ {T.contact}</button>
+          style={{ padding: '6px 12px', background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 100, fontSize: 13, fontFamily: 'Nunito, sans-serif', fontWeight: 700, color: 'var(--text)' }}
+        >
+          <span>✉️ </span><span>{T.contact.title}</span>
+        </button>
       </div>
 
       {/* Logo */}
@@ -119,22 +86,29 @@ export default function Home({ onScan, lang, onLangChange }) {
 
       {/* Pills */}
       <div style={{ animation: 'fadeSlideUp 0.5s 0.2s ease both', display: 'flex', gap: 8, marginTop: 28, flexWrap: 'wrap', justifyContent: 'center' }}>
-        {T.pills.map(f => (
-          <span key={f} style={{ padding: '6px 14px', background: 'var(--green-light)', color: 'var(--green-dark)', borderRadius: 100, fontSize: 13, fontFamily: 'Nunito, sans-serif', fontWeight: 700 }}>{f}</span>
+        {T.pills.map((f, i) => (
+          <span key={i} style={{ padding: '6px 14px', background: 'var(--green-light)', color: 'var(--green-dark)', borderRadius: 100, fontSize: 13, fontFamily: 'Nunito, sans-serif', fontWeight: 700 }}>{f}</span>
         ))}
       </div>
 
       {/* Scan CTA */}
       <div style={{ animation: 'fadeSlideUp 0.5s 0.3s ease both', marginTop: 48, width: '100%' }}>
-        <button onClick={onScan} style={{ width: '100%', padding: '16px', background: 'var(--green-dark)', color: '#fff', borderRadius: 'var(--radius-lg)', fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 17, boxShadow: '0 6px 20px rgba(45,80,22,0.30)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-          <ScanIcon /> {T.scan}
+        <button
+          onClick={onScan}
+          style={{ width: '100%', padding: '16px', background: 'var(--green-dark)', color: '#fff', borderRadius: 'var(--radius-lg)', fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 17, boxShadow: '0 6px 20px rgba(45,80,22,0.30)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}
+        >
+          <ScanIcon />
+          <span>{T.scan}</span>
         </button>
       </div>
 
       {/* Share button */}
       <div style={{ animation: 'fadeSlideUp 0.5s 0.35s ease both', marginTop: 12, width: '100%' }}>
-        <button onClick={handleShare} style={{ width: '100%', padding: '14px', background: 'transparent', color: 'var(--green-dark)', borderRadius: 'var(--radius-lg)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15, border: '1.5px solid var(--green-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-          📤 {shareCopied ? T.share.copied : T.share.text}
+        <button
+          onClick={handleShare}
+          style={{ width: '100%', padding: '14px', background: 'transparent', color: 'var(--green-dark)', borderRadius: 'var(--radius-lg)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15, border: '1.5px solid var(--green-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+        >
+          <span>📤 </span><span>{shareLabel}</span>
         </button>
       </div>
 
@@ -147,12 +121,17 @@ export default function Home({ onScan, lang, onLangChange }) {
       {showContact && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'flex-end' }} onClick={() => setShowContact(false)}>
           <div style={{ background: 'var(--surface)', borderRadius: '24px 24px 0 0', width: '100%', padding: '28px 24px 48px', animation: 'slideUp 0.3s ease' }} onClick={e => e.stopPropagation()}>
-            <h3 style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 20, marginBottom: 20 }}>✉️ {T.contact.title}</h3>
+            <h3 style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 20, marginBottom: 20 }}>
+              <span>✉️ </span><span>{T.contact.title}</span>
+            </h3>
             <div style={{ background: 'var(--surface-2)', borderRadius: 'var(--radius-md)', padding: '16px 18px', marginBottom: 16 }}>
               <p style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 16, marginBottom: 6 }}>{T.contact.name}</p>
-              <a href={`mailto:${T.contact.email}`} style={{ fontSize: 14, color: 'var(--green-dark)', textDecoration: 'none', fontWeight: 600 }}>{T.contact.email}</a>
+              <a href={'mailto:' + T.contact.email} style={{ fontSize: 14, color: 'var(--green-dark)', textDecoration: 'none', fontWeight: 600 }}>{T.contact.email}</a>
             </div>
-            <button onClick={() => setShowContact(false)} style={{ width: '100%', padding: '14px', background: 'var(--green-dark)', color: '#fff', borderRadius: 'var(--radius-md)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15 }}>
+            <button
+              onClick={() => setShowContact(false)}
+              style={{ width: '100%', padding: '14px', background: 'var(--green-dark)', color: '#fff', borderRadius: 'var(--radius-md)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15 }}
+            >
               {T.contact.close}
             </button>
           </div>
