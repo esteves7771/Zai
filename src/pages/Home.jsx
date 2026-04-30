@@ -21,7 +21,7 @@ export default function Home({ onScan, lang, onLangChange }) {
     }
   }
 
-  const shareLabel = shareCopied ? T.share.copied : T.share.text
+  const shareLabel = shareCopied ? T.share.copied : T.share.title
 
   return (
     <div className="page-enter" style={{
