@@ -15,7 +15,7 @@ export default function Home({ onScan }) {
         display: 'flex', flexDirection: 'column', alignItems: 'center',
       }}>
         <img
-          src="/logo.png"
+          src="/Zai/logo.png"
           alt="Zai"
           style={{ width: 140, height: 140, objectFit: 'contain' }}
         />
