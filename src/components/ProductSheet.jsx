@@ -4,7 +4,7 @@ import NutriBadge from './NutriBadge'
 import { scoreProduct, getPositives, getNegatives, getAdditiveDetails } from '../lib/scoring'
 import { addToHistory } from '../lib/history'
 
-export default function ProductSheet({ product, onClose, onScanAgain }) {
+export default function ProductSheet({ product, onClose, onScanAgain, lang = 'en' }) {
   const [tab, setTab] = useState('overview')
   const [visible, setVisible] = useState(false)
 
@@ -96,7 +96,7 @@ export default function ProductSheet({ product, onClose, onScanAgain }) {
           </div>
 
           {/* Score */}
-          <ScoreRing score={score} size={80} />
+          <ScoreRing score={score} size={80} lang={lang} />
         </div>
 
         {/* Tabs */}
