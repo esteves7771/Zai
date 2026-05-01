@@ -157,9 +157,12 @@ export default function Home({ onScan, lang, onLangChange, onOpenAllergens }) {
                 <a href="mailto:pedro.esteves.pt@proton.me" style={{ color: 'var(--green-dark)', fontWeight: 600, textDecoration: 'none' }}>pedro.esteves.pt@proton.me</a>
               </Section>
               <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid var(--border)', textAlign: 'center' }}>
-                <a href="/Zai/privacy.html" target="_blank" style={{ fontSize: 13, color: 'var(--green-dark)', fontWeight: 600, textDecoration: 'none' }}>
+                <button
+                  onClick={() => window.open('https://esteves7771.github.io/Zai/privacy.html', '_blank', 'noopener')}
+                  style={{ fontSize: 13, color: 'var(--green-dark)', fontWeight: 600, textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}
+                >
                   Read full Privacy Policy ↗
-                </a>
+                </button>
               </div>
             </div>
             <div style={{ padding: '12px 24px 40px', flexShrink: 0 }}>
