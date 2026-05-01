@@ -1,0 +1,56 @@
+Copyright (c) 2026 Pedro Esteves. All rights reserved.
+
+PROPRIETARY SOFTWARE LICENSE
+
+This software, including all source code, design, assets, algorithms, and
+associated documentation (collectively, the "Software"), is the exclusive
+property of Pedro Esteves ("Author").
+
+RESTRICTIONS
+
+1. No permission is granted to any person or entity to copy, reproduce,
+   modify, merge, publish, distribute, sublicense, sell, or otherwise use
+   the Software or any portion thereof without the express prior written
+   permission of the Author.
+
+2. You may not reverse engineer, decompile, disassemble, or attempt to
+   derive the source code or underlying ideas of the Software.
+
+3. You may not create derivative works based on the Software.
+
+4. You may not use the Software or any part of it to build a competing
+   product or service.
+
+5. You may not remove or alter any copyright notices, trademarks, or other
+   proprietary markings contained in the Software.
+
+PERMITTED USE
+
+Viewing this repository on GitHub for personal reference and learning
+purposes is permitted. No other use is permitted without written consent.
+
+THIRD-PARTY COMPONENTS
+
+This Software uses the following third-party services and data:
+- Open Food Facts (world.openfoodfacts.org) — licensed under ODbL
+- Open Beauty Facts (world.openbeautyfacts.org) — licensed under ODbL
+- Nunito and DM Sans fonts — licensed under SIL Open Font License
+
+These third-party components retain their original licenses and are not
+covered by this proprietary license.
+
+DISCLAIMER
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES
+OR OTHER LIABILITY ARISING FROM USE OF THE SOFTWARE.
+
+CONTACT
+
+For licensing inquiries or permission requests:
+pedro.esteves.pt@proton.me
+
+---
+
+Zai — Know What You Eat
+Copyright (c) 2026 Pedro Esteves
