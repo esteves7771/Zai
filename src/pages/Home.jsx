@@ -146,15 +146,21 @@ export default function Home({ onScan, lang, onLangChange, onOpenAllergens }) {
               <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>{P.updated || 'Last updated: May 2026'}</p>
             </div>
             <div style={{ overflowY: 'auto', flex: 1, padding: '16px 24px 8px' }}>
-              <Section title={P.collectTitle || 'What we collect'}>{P.collectBody || 'Nothing. Zai stores your scan history and saved products locally on your device only.'}</Section>
-              <Section title={P.notCollectTitle || 'What we do NOT collect'}>{P.notCollectBody || 'No personal information. No name, email, location, device ID, analytics or advertising data of any kind.'}</Section>
-              <Section title={P.cameraTitle || 'Camera'}>{P.cameraBody || 'Zai requests camera access solely to scan product barcodes. Camera data is processed entirely on your device.'}</Section>
-              <Section title={P.thirdPartyTitle || 'Third-party services'}>{P.thirdPartyBody || 'When you scan or search a product, Zai queries the Open Food Facts and Open Beauty Facts APIs. These are free, open-source, non-profit databases.'}</Section>
-              <Section title={P.yourDataTitle || 'Your data'}>{P.yourDataBody || 'All scan history and favourites are stored only on your device. You can delete this at any time using the Clear History function inside the app.'}</Section>
+              <Section title={P.collectTitle || 'What we store on your device'}>{P.collectBody || 'Scan history, saved products, allergen preferences and app settings. All stored locally on your device only. Never transmitted to any server.'}</Section>
+              <Section title={P.notCollectTitle || 'What we do NOT collect'}>{P.notCollectBody || 'No personal information. No name, email, location, device ID, analytics, tracking or advertising data of any kind.'}</Section>
+              <Section title={P.cameraTitle || 'Camera'}>{P.cameraBody || 'Used only to scan barcodes. No images or video are saved or transmitted. Camera data never leaves your device.'}</Section>
+              <Section title={'🌍 ' + (P.countryTitle || 'Country detection')}>{P.countryBody || 'Zai reads your device language setting to derive a country code (e.g. pt, br, es) and includes it in API requests to show more relevant local products. We do not store or track your location.'}</Section>
+              <Section title={P.thirdPartyTitle || 'Third-party APIs'}>{P.thirdPartyBody || 'Scanning and searching sends the barcode or query to Open Food Facts and Open Beauty Facts — free, open-source, non-profit databases. Their servers may log the request including your IP address. Zai has no control over this.'}</Section>
+              <Section title={P.yourDataTitle || 'Your data'}>{P.yourDataBody || 'All data is stored only on your device. Clear it anytime using Clear History inside the app or by clearing your browser data.'}</Section>
               <Section title={P.contactTitle || 'Contact'}>
-                <span>{P.contactBody || 'For any privacy-related questions: '}</span>
+                <span>{P.contactBody || 'Questions? '}</span>
                 <a href="mailto:pedro.esteves.pt@proton.me" style={{ color: 'var(--green-dark)', fontWeight: 600, textDecoration: 'none' }}>pedro.esteves.pt@proton.me</a>
               </Section>
+              <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid var(--border)', textAlign: 'center' }}>
+                <a href="/Zai/privacy.html" target="_blank" style={{ fontSize: 13, color: 'var(--green-dark)', fontWeight: 600, textDecoration: 'none' }}>
+                  Read full Privacy Policy ↗
+                </a>
+              </div>
             </div>
             <div style={{ padding: '12px 24px 40px', flexShrink: 0 }}>
               <button onClick={() => setShowPrivacy(false)} style={{ width: '100%', padding: '14px', background: 'var(--green-dark)', color: '#fff', borderRadius: 'var(--radius-md)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15 }}>
