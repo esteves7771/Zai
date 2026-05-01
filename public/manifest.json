@@ -1,22 +1,27 @@
 {
+  "id": "com.zai.app",
   "name": "Zai - Know What You Eat",
   "short_name": "Zai",
   "description": "Scan food products and know exactly what you are eating.",
-  "start_url": "/Zai/",
-  "display": "standalone",
-  "background_color": "#FAFAF7",
   "theme_color": "#2D5016",
+  "background_color": "#FAFAF7",
+  "display": "standalone",
   "orientation": "portrait",
+  "start_url": "/Zai/",
+  "scope": "/Zai/",
+  "lang": "en",
   "icons": [
     {
       "src": "/Zai/logo.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/Zai/logo.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
