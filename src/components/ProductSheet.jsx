@@ -134,7 +134,7 @@ export default function ProductSheet({ product, onClose, onScanAgain, lang = 'en
             <div>
               <p style={{ fontSize: 13, fontWeight: 700, color: '#E53935', marginBottom: 4, fontFamily: 'Nunito, sans-serif' }}>Allergen Alert</p>
               <p style={{ fontSize: 12, color: '#E53935', lineHeight: 1.5 }}>
-                Contains: {allergenHits.map(a => a.emoji + ' ' + a.label).join(', ')}
+                {T.allergens?.contains || 'Contains:'} {allergenHits.map(a => a.emoji + ' ' + (T.allergens?.[a.id] || a.id)).join(', ')}
               </p>
             </div>
           </div>
