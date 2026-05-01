@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zai – Privacy Policy</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #FAFAF7;
+      color: #1A1A1A;
+      line-height: 1.7;
+      padding: 0;
+    }
+    .header {
+      background: #2D5016;
+      padding: 32px 24px 24px;
+      text-align: center;
+    }
+    .header img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      color: #fff;
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 24px 60px;
+    }
+    .updated {
+      font-size: 12px;
+      color: #8A8A8A;
+      margin-bottom: 32px;
+      padding: 8px 14px;
+      background: #fff;
+      border-radius: 8px;
+      display: inline-block;
+      border: 1px solid #E8EAE3;
+    }
+    .section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 16px;
+      border: 1px solid #E8EAE3;
+    }
+    .section h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #2D5016;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section p {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.75;
+    }
+    .section p + p {
+      margin-top: 10px;
+    }
+    .highlight {
+      background: #e8f0de;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #2D5016;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+    .warning {
+      background: #fff8ee;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #e07823;
+      margin-top: 12px;
+    }
+    a { color: #2D5016; font-weight: 600; }
+    .back {
+      display: inline-block;
+      margin-bottom: 24px;
+      font-size: 14px;
+      color: #2D5016;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #8A8A8A;
+      margin-top: 32px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <img src="/Zai/logo.png" alt="Zai" />
+  <h1>Privacy Policy</h1>
+  <p>Zai – Know What You Eat</p>
+</div>
+
+<div class="container">
+  <div class="updated">Last updated: May 2026</div>
+
+  <div class="section">
+    <h2>🌱 Our Commitment</h2>
+    <p>Zai is built on a simple principle: you have the right to know what you eat and what goes on your skin — without giving up your personal data to do so.</p>
+    <p>We do not collect personal information. We do not track you. We do not sell data. We do not show ads.</p>
+    <div class="highlight">✓ No account required. No personal data collected by Zai.</div>
+  </div>
+
+  <div class="section">
+    <h2>📱 What We Store on Your Device</h2>
+    <p>All data Zai stores lives exclusively on your device using browser local storage. This includes:</p>
+    <p><strong>Scan history</strong> — the products you have scanned or searched, including product name, brand, image, score and scan date.</p>
+    <p><strong>Saved products</strong> — products you star as favourites.</p>
+    <p><strong>Allergen preferences</strong> — the allergens you select in the allergen setup screen.</p>
+    <p><strong>App preferences</strong> — your selected language, whether you have completed onboarding, and whether you have configured allergens.</p>
+    <div class="highlight">✓ None of this data ever leaves your device. Zai cannot access it. It is deleted when you clear your browser data or uninstall the app.</div>
+  </div>
+
+  <div class="section">
+    <h2>📷 Camera Access</h2>
+    <p>Zai requests access to your camera solely to scan product barcodes. The camera feed is processed in real time on your device to detect barcodes. No images or video are saved, recorded or transmitted at any point.</p>
+    <div class="highlight">✓ Camera data never leaves your device.</div>
+  </div>
+
+  <div class="section">
+    <h2>🌍 Country and Language Detection</h2>
+    <p>To provide more relevant product results for your region, Zai reads your device's browser language setting (for example <em>pt-PT</em>, <em>pt-BR</em>, <em>es-ES</em>, <em>de-DE</em>) and derives a country code from it.</p>
+    <p>This country code is included as a parameter in API requests to Open Food Facts and Open Beauty Facts (for example <strong>cc=pt</strong> for Portugal, <strong>cc=br</strong> for Brazil). This helps surface products sold in your country first.</p>
+    <p>We do not store your location or country. We do not use GPS. The country code is derived from your language setting only and is sent as part of each API request.</p>
+    <div class="warning">⚠️ The API servers (Open Food Facts / Open Beauty Facts) receive the country code and barcode as part of standard HTTP requests. See the Third-Party Services section below.</div>
+  </div>
+
+  <div class="section">
+    <h2>🔍 Third-Party Services</h2>
+    <p>When you scan a barcode or search for a product, Zai sends a request to the following external APIs:</p>
+    <p><strong>Open Food Facts</strong> (<a href="https://world.openfoodfacts.org" target="_blank">world.openfoodfacts.org</a>) — a free, open-source, non-profit food product database operated by the Open Food Facts association based in France.</p>
+    <p><strong>Open Beauty Facts</strong> (<a href="https://world.openbeautyfacts.org" target="_blank">world.openbeautyfacts.org</a>) — a free, open-source, non-profit cosmetic product database operated by the same association.</p>
+    <p>These requests include the barcode or search query, your derived country code, and standard HTTP headers including your IP address. This is standard web server logging behaviour outside of Zai's control.</p>
+    <p>Open Food Facts privacy policy: <a href="https://world.openfoodfacts.org/privacy" target="_blank">world.openfoodfacts.org/privacy</a></p>
+    <div class="warning">⚠️ Zai has no control over how Open Food Facts and Open Beauty Facts log or process API requests on their servers.</div>
+  </div>
+
+  <div class="section">
+    <h2>📊 Analytics and Tracking</h2>
+    <p>Zai contains zero analytics, tracking or monitoring tools. We do not use Google Analytics, Firebase, Mixpanel, Sentry, or any equivalent service. We have no visibility into how you use the app.</p>
+    <div class="highlight">✓ Nobody is watching. No usage data is collected by Zai.</div>
+  </div>
+
+  <div class="section">
+    <h2>📢 Advertising</h2>
+    <p>Zai contains no advertising. We do not use advertising networks, advertising identifiers (IDFA, GAID), or any form of behavioural profiling.</p>
+    <div class="highlight">✓ No ads. Ever.</div>
+  </div>
+
+  <div class="section">
+    <h2>👶 Children</h2>
+    <p>Zai does not knowingly collect any data from children under 13. The app contains no features directed at children and collects no personal information from any user regardless of age.</p>
+  </div>
+
+  <div class="section">
+    <h2>🔄 Changes to This Policy</h2>
+    <p>If we make material changes to this privacy policy we will update the date at the top of this page. We encourage you to review this page periodically. Continued use of Zai after changes constitutes acceptance of the updated policy.</p>
+  </div>
+
+  <div class="section">
+    <h2>✉️ Contact</h2>
+    <p>For any questions or concerns regarding this privacy policy or your data:</p>
+    <p><strong>Pedro Esteves</strong><br>
+    <a href="mailto:pedro.esteves.pt@proton.me">pedro.esteves.pt@proton.me</a></p>
+    <p style="margin-top:12px;font-size:13px;color:#8A8A8A;">This app is an independent project and is not affiliated with Open Food Facts or Open Beauty Facts beyond using their public APIs.</p>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 Zai – Know What You Eat</p>
+    <p style="margin-top:6px;"><a href="/Zai/">← Back to Zai</a></p>
+  </div>
+</div>
+
+</body>
+</html>
