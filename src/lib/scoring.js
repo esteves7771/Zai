@@ -1,8 +1,10 @@
 import additives from './additives.json'
 import cosmeticIngredientsList from './cosmetic-ingredients.json'
 
-const NUTRI_MAP = { a: 25, b: 10, c: -10, d: -30, e: -55 }
-const NOVA_MAP  = { 1: 15, 2: 5, 3: -10, 4: -25 }
+// Recalibrated - fairer to natural products
+const NUTRI_MAP = { a: 25, b: 10, c: -8, d: -22, e: -40 }
+const NOVA_MAP  = { 1: 15, 2: 5, 3: -8, 4: -20 }
+const MIN_SCORE = 5
 
 export function scoreProduct(product) {
   if (product.productType === 'cosmetic') return scoreCosmeticProduct(product)
@@ -15,24 +17,24 @@ export function scoreProduct(product) {
   for (const tag of product.additivesTags || []) {
     const entry = additives[tag]
     if (!entry) continue
-    if (entry.risk === 3) score -= 15
-    else if (entry.risk === 2) score -= 6
+    if (entry.risk === 3) score -= 12
+    else if (entry.risk === 2) score -= 5
     else if (entry.risk === 1) score -= 1
   }
   const n = product.nutriments || {}
   if (Object.keys(n).length > 0) {
-    if (n['sugars_100g'] > 22) score -= 12
-    else if (n['sugars_100g'] > 12) score -= 6
-    if (n['salt_100g'] > 1.5) score -= 10
-    else if (n['salt_100g'] > 0.6) score -= 5
-    if (n['saturated-fat_100g'] > 5) score -= 8
+    if (n['sugars_100g'] > 22) score -= 10
+    else if (n['sugars_100g'] > 12) score -= 5
+    if (n['salt_100g'] > 1.5) score -= 8
+    else if (n['salt_100g'] > 0.6) score -= 4
+    if (n['saturated-fat_100g'] > 5) score -= 6
     if (n['fiber_100g'] > 5) score += 8
     else if (n['fiber_100g'] > 3) score += 4
     if (n['proteins_100g'] > 15) score += 6
     else if (n['proteins_100g'] > 8) score += 3
   }
   if (product.labels?.includes('en:organic')) score += 8
-  return Math.max(0, Math.min(100, Math.round(score)))
+  return Math.max(MIN_SCORE, Math.min(100, Math.round(score)))
 }
 
 export function getScoreColor(score) {
@@ -115,6 +117,7 @@ export function getAdditiveDetails(tags) {
     .sort((a, b) => b.risk - a.risk)
 }
 
+// COSMETICS
 export function scoreCosmeticProduct(product) {
   let score = 80
   const ingredients = (product.ingredients || '').toLowerCase()
@@ -126,7 +129,7 @@ export function scoreCosmeticProduct(product) {
     }
   }
   if (product.labels?.some(l => l.includes('organic') || l.includes('natural'))) score += 8
-  return Math.max(0, Math.min(100, Math.round(score)))
+  return Math.max(MIN_SCORE, Math.min(100, Math.round(score)))
 }
 
 export function getCosmeticPositives(product) {

@@ -19,13 +19,16 @@ export function addToHistory(product, score) {
     image: product.image,
     score,
     nutriscoreGrade: product.nutriscoreGrade,
+    ecoscoreGrade: product.ecoscoreGrade || null,
     scannedAt: new Date().toISOString(),
-    // Save full data needed to reconstruct product sheet
     additivesTags: product.additivesTags || [],
     nutriments: product.nutriments || {},
     labels: product.labels || [],
     ingredients: product.ingredients || null,
     quantity: product.quantity || '',
+    productType: product.productType || 'food',
+    novaGroup: product.novaGroup || null,
+    allergensTags: product.allergensTags || [],
   }
   const filtered = history.filter(h => h.barcode !== product.barcode)
   const updated = [entry, ...filtered].slice(0, MAX)
