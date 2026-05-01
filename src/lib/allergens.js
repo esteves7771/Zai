@@ -163,19 +163,34 @@ export function checkAllergens(product) {
   return ALLERGEN_LIST.filter(a => {
     if (!userAllergens.includes(a.id)) return false
 
-    // 1. Check official allergen tags
-    if (productAllergenTags.some(tag =>
-      tag === a.tag ||
-      tag.includes(a.id) ||
-      tag.includes(a.tag.replace('en:', ''))
-    )) return true
+    // 1. Check exact tag match
+    if (productAllergenTags.some(tag => tag === a.tag)) return true
 
-    // 2. Check tags for keyword matches
+    // 2. Check tag contains the OFF tag name (e.g. 'milk' in 'en:milk-and-dairy')
+    const tagName = a.tag.replace('en:', '')
+    if (productAllergenTags.some(tag => tag.includes(tagName))) return true
+
+    // 3. Special cases where id differs from tag name
+    const extraTagMatches = {
+      lactose:   ['milk', 'dairy', 'lactose', 'lactos'],
+      shellfish: ['crustacean', 'shellfish', 'mollusc', 'mollusk'],
+      nuts:      ['nut', 'almond', 'hazelnut', 'cashew', 'walnut', 'pistachio'],
+      peanuts:   ['peanut', 'arachis', 'groundnut'],
+      soy:       ['soy', 'soja', 'soya'],
+      sulphites: ['sulphur', 'sulfur', 'sulphite', 'sulfite'],
+    }
+    if (extraTagMatches[a.id]) {
+      if (productAllergenTags.some(tag =>
+        extraTagMatches[a.id].some(kw => tag.includes(kw))
+      )) return true
+    }
+
+    // 4. Check keywords in tags
     if (productAllergenTags.some(tag =>
       a.keywords.some(kw => tag.includes(kw))
     )) return true
 
-    // 3. Scan ingredients text in any language
+    // 5. Scan ingredients text
     if (ingredientsText && a.keywords.some(kw => ingredientsText.includes(kw))) return true
 
     return false
