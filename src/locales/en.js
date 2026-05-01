@@ -126,6 +126,7 @@ export default {
     excellent: 'Excellent',
     ok: 'OK',
     poor: 'Poor',
+    tapForDetails: 'tap for details',
     avoid: 'Avoid',
     tooltip: {
       title: 'How is this score calculated?',

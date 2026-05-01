@@ -76,6 +76,7 @@ export default {
     excellent: 'Excelente',
     ok: 'OK',
     poor: 'Ruim',
+    tapForDetails: 'toque para detalhes',
     avoid: 'Evitar',
     tooltip: {
       title: 'Como essa pontuacao e calculada?',
