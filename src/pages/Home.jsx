@@ -36,10 +36,10 @@ export default function Home({ onScan, lang, onLangChange, onOpenAllergens }) {
     }}>
 
       {/* Top bar */}
-      <div style={{ position: 'absolute', top: 16, left: 16, right: 16, display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: 8 }}>
-        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-        {/* Language selector */}
-        <div style={{ position: 'relative' }}>
+      <div style={{ position: 'absolute', top: 16, left: 0, right: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px' }}>
+
+        {/* Language selector - LEFT */}
+        <div style={{ position: 'relative', flexShrink: 0 }}>
           <button
             onClick={() => setShowLang(!showLang)}
             style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px', background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 100, fontSize: 13, fontFamily: 'Nunito, sans-serif', fontWeight: 700, color: 'var(--text)' }}
@@ -61,129 +61,18 @@ export default function Home({ onScan, lang, onLangChange, onOpenAllergens }) {
           )}
         </div>
 
-        {/* Allergen button */}
+        {/* Allergens - CENTER */}
         <button onClick={onOpenAllergens}
-          style={{ padding: "4px 10px", background: "var(--red-light)", border: "1px solid var(--score-red)", borderRadius: 100, fontSize: 12, fontFamily: "Nunito, sans-serif", fontWeight: 700, color: "var(--score-red)" }}
+          style={{ padding: '6px 12px', background: 'var(--red-light)', border: '1px solid var(--score-red)', borderRadius: 100, fontSize: 12, fontFamily: 'Nunito, sans-serif', fontWeight: 700, color: 'var(--score-red)', flexShrink: 0 }}
         >🚨 {T.allergens?.button || 'Allergens'}</button>
 
-        </div>
-
-        {/* Contact */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        {/* Contact - RIGHT */}
         <button onClick={() => setShowContact(true)}
-          style={{ padding: '6px 12px', background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 100, fontSize: 13, fontFamily: 'Nunito, sans-serif', fontWeight: 700, color: 'var(--text)' }}
+          style={{ padding: '6px 12px', background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 100, fontSize: 13, fontFamily: 'Nunito, sans-serif', fontWeight: 700, color: 'var(--text)', flexShrink: 0 }}
         >
           <span>✉️ </span><span>{T.contact.title}</span>
         </button>
-        </div>
       </div>
-
-      {/* Logo */}
-      <div style={{ animation: 'fadeSlideUp 0.5s ease both' }}>
-        <img src="/Zai/logo.png" alt="Zai" style={{ width: 160, height: 160, objectFit: 'contain' }} />
-      </div>
-
-      {/* Tagline */}
-      <div style={{ animation: 'fadeSlideUp 0.5s 0.1s ease both', textAlign: 'center', marginTop: 8 }}>
-        <p style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: 260 }}>{T.tagline}</p>
-      </div>
-
-      {/* Pills */}
-      <div style={{ animation: 'fadeSlideUp 0.5s 0.2s ease both', display: 'flex', gap: 8, marginTop: 28, flexWrap: 'wrap', justifyContent: 'center' }}>
-        {T.pills.map((f, i) => (
-          <span key={i} style={{ padding: '6px 14px', background: 'var(--green-light)', color: 'var(--green-dark)', borderRadius: 100, fontSize: 13, fontFamily: 'Nunito, sans-serif', fontWeight: 700 }}>{f}</span>
-        ))}
-      </div>
-
-      {/* Scan CTA */}
-      <div style={{ animation: 'fadeSlideUp 0.5s 0.3s ease both', marginTop: 48, width: '100%' }}>
-        <button onClick={onScan} style={{ width: '100%', padding: '16px', background: 'var(--green-dark)', color: '#fff', borderRadius: 'var(--radius-lg)', fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 17, boxShadow: '0 6px 20px rgba(45,80,22,0.30)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-          <ScanIcon /><span>{T.scan}</span>
-        </button>
-      </div>
-
-      {/* Share button */}
-      <div style={{ animation: 'fadeSlideUp 0.5s 0.35s ease both', marginTop: 12, width: '100%' }}>
-        <button onClick={handleShare} style={{ width: '100%', padding: '14px', background: 'transparent', color: 'var(--green-dark)', borderRadius: 'var(--radius-lg)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15, border: '1.5px solid var(--green-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-          <span>📤 </span><span>{shareLabel}</span>
-        </button>
-      </div>
-
-      {/* Footer */}
-      <div style={{ animation: 'fadeSlideUp 0.5s 0.4s ease both', marginTop: 20, textAlign: 'center' }}>
-        <p style={{ fontSize: 12, color: 'var(--text-light)' }}>{T.powered}</p>
-        <button
-          onClick={() => setShowPrivacy(true)}
-          style={{ fontSize: 11, color: 'var(--text-light)', marginTop: 6, textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}
-        >
-          {P.link || 'Privacy Policy'}
-        </button>
-      </div>
-
-      {/* Contact modal */}
-      {showContact && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'flex-end' }} onClick={() => setShowContact(false)}>
-          <div style={{ background: 'var(--surface)', borderRadius: '24px 24px 0 0', width: '100%', padding: '28px 24px 48px', animation: 'slideUp 0.3s ease' }} onClick={e => e.stopPropagation()}>
-            <h3 style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 20, marginBottom: 20 }}>
-              <span>✉️ </span><span>{T.contact.title}</span>
-            </h3>
-            <div style={{ background: 'var(--surface-2)', borderRadius: 'var(--radius-md)', padding: '16px 18px', marginBottom: 16 }}>
-              <p style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 16, marginBottom: 6 }}>{T.contact.name}</p>
-              <a href={'mailto:' + T.contact.email} style={{ fontSize: 14, color: 'var(--green-dark)', textDecoration: 'none', fontWeight: 600 }}>{T.contact.email}</a>
-            </div>
-            <button onClick={() => setShowContact(false)} style={{ width: '100%', padding: '14px', background: 'var(--green-dark)', color: '#fff', borderRadius: 'var(--radius-md)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15 }}>
-              {T.contact.close}
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Privacy Policy modal */}
-      {showPrivacy && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'flex-end' }} onClick={() => setShowPrivacy(false)}>
-          <div style={{ background: 'var(--surface)', borderRadius: '24px 24px 0 0', width: '100%', maxHeight: '85vh', display: 'flex', flexDirection: 'column', animation: 'slideUp 0.3s ease' }} onClick={e => e.stopPropagation()}>
-            {/* Handle */}
-            <div style={{ display: 'flex', justifyContent: 'center', padding: '12px 0 4px', flexShrink: 0 }}>
-              <div style={{ width: 36, height: 4, borderRadius: 2, background: 'var(--border)' }} />
-            </div>
-            <div style={{ padding: '8px 24px 0', flexShrink: 0 }}>
-              <h3 style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 800, fontSize: 20 }}>
-                {P.title || 'Privacy Policy'}
-              </h3>
-              <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>
-                {P.updated || 'Last updated: May 2026'}
-              </p>
-            </div>
-            {/* Scrollable content */}
-            <div style={{ overflowY: 'auto', flex: 1, padding: '16px 24px 8px' }}>
-              <Section title={P.collectTitle || 'What we collect'}>
-                {P.collectBody || 'Nothing. Zai stores your scan history and saved products locally on your device only. This data never leaves your phone and is never sent to any server.'}
-              </Section>
-              <Section title={P.notCollectTitle || 'What we do NOT collect'}>
-                {P.notCollectBody || 'No personal information. No name, email, location, device ID, analytics or advertising data of any kind.'}
-              </Section>
-              <Section title={P.cameraTitle || 'Camera'}>
-                {P.cameraBody || 'Zai requests camera access solely to scan product barcodes. Camera data is processed entirely on your device and never transmitted anywhere.'}
-              </Section>
-              <Section title={P.thirdPartyTitle || 'Third-party services'}>
-                {P.thirdPartyBody || 'When you scan or search a product, Zai queries the Open Food Facts and Open Beauty Facts APIs. These are free, open-source, non-profit databases. Their servers may log standard request data such as IP address and barcode queried as part of normal web server operation. Zai has no control over this logging.'}
-              </Section>
-              <Section title={P.yourDataTitle || 'Your data'}>
-                {P.yourDataBody || 'All scan history and favourites are stored only on your device. You can delete this at any time using the Clear History function inside the app, or by clearing your browser data.'}
-              </Section>
-              <Section title={P.contactTitle || 'Contact'}>
-                <span>{P.contactBody || 'For any privacy-related questions: '}</span>
-                <a href="mailto:pedro.esteves.pt@proton.me" style={{ color: 'var(--green-dark)', fontWeight: 600, textDecoration: 'none' }}>pedro.esteves.pt@proton.me</a>
-              </Section>
-            </div>
-            <div style={{ padding: '12px 24px 40px', flexShrink: 0 }}>
-              <button onClick={() => setShowPrivacy(false)} style={{ width: '100%', padding: '14px', background: 'var(--green-dark)', color: '#fff', borderRadius: 'var(--radius-md)', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: 15 }}>
-                {P.close || 'Close'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Lang backdrop */}
       {showLang && <div style={{ position: 'fixed', inset: 0, zIndex: 50 }} onClick={() => setShowLang(false)} />}
