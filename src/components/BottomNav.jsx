@@ -19,7 +19,7 @@ export default function BottomNav({ active, onChange, lang }) {
         const label = tab.id === 'home' ? T.nav.home
           : tab.id === 'search' ? T.nav.search
           : tab.id === 'history' ? T.nav.history
-          : tab.id === 'favorites' ? (T.nav.favorites || 'Saved')
+          : tab.id === 'favorites' ? (T.nav.favorites || T.favorites?.title || 'Saved')
           : ''
         return (
           <button key={tab.id} onClick={() => onChange(tab.id)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 3, flex: 1, height: '100%', color: isActive ? 'var(--green-dark)' : 'var(--text-light)', transition: 'color 0.2s ease' }}>
