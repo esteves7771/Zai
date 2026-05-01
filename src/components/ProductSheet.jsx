@@ -5,7 +5,7 @@ import EcoBadge from './EcoBadge'
 import { scoreProduct, getPositives, getNegatives, getAdditiveDetails, getSmartAlert, getCosmeticIngredientDetails } from '../lib/scoring'
 import { addToHistory } from '../lib/history'
 import { addFavorite, removeFavorite, isFavorite } from '../lib/favorites'
-import { checkAllergens } from '../lib/allergens'
+import { checkAllergens, getAllergens } from '../lib/allergens'
 import { t } from '../lib/i18n'
 import additives from '../lib/additives.json'
 
@@ -140,6 +140,19 @@ export default function ProductSheet({ product, onClose, onScanAgain, lang = 'en
           </div>
         )}
 
+        {/* No allergen data warning */}
+        {getAllergens().length > 0 && 
+         allergenHits.length === 0 && 
+         (product.allergensTags || []).length === 0 && 
+         !product.ingredients && (
+          <div style={{ margin: '0 16px 6px', padding: '10px 14px', background: '#fff8ee', borderRadius: 12, borderLeft: '3px solid #F5A623', display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
+            <span style={{ fontSize: 18, flexShrink: 0 }}>⚠️</span>
+            <span style={{ fontSize: 12, color: '#e07823', fontWeight: 600, lineHeight: 1.4 }}>
+              No allergen data available for this product. Check the label manually.
+            </span>
+          </div>
+        )}
+        
         {/* Smart Alert */}
         {alert && allergenHits.length === 0 && (
           <div style={{ margin: '0 16px 6px', padding: '10px 14px', background: alertBg[alert.type], borderRadius: 12, borderLeft: `3px solid ${alertColors[alert.type]}`, display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
