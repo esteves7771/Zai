@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.pedroesteves.zai",
+    "sha256_cert_fingerprints": ["64:FA:D2:1D:39:0D:BB:AF:05:51:16:59:95:94:3F:DC:4B:35:42:4F:20:75:3E:4A:34:51:56:EE:76:57:F4:8C"]
+  }
+}]
